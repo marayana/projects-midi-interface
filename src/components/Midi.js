@@ -35,7 +35,6 @@ function Midi({ showChannels, playNoteCallback, updateBtnsCallback }) {
 
     function onMIDIMessage(event) {
         const msg = event.data;
-        console.log(msg);
         //const cmd = +msg[0] >> 4;
         //const channel = +msg[0] & 0xf;
         const command = +msg[0];

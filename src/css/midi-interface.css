@@ -175,6 +175,12 @@
   color: var(--dark-hover);
 }
 
+@media (max-width: 500px) {
+  .midi-interface .start-modal {
+    height: 150vw;
+  }
+}
+
 .midi-interface .options {
   padding: 32px 0 8px;
   display: -webkit-box;

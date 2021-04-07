@@ -57,8 +57,7 @@ function MidiInterface() {
         currentGrid: '8x8',
         instruments: [
             ['piano', '3'],
-            ['organ', '190'],
-            ['guitar', '256']
+            ['guitar', '259']
         ],
         currentInstrument: '3',
         currentVolume: 30

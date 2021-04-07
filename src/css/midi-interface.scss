@@ -176,6 +176,12 @@
         }
     }
 
+    @media (max-width: 500px) {
+        .start-modal {
+            height: 150vw;
+        }
+    }
+
     .options {
         padding: 32px 0 8px;
         display: flex;

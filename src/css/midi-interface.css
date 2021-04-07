@@ -1,0 +1,700 @@
+.midi-interface {
+  /* general UI (not user-editable) */
+  --dark-bg: #020100;
+  --dark-font: #333;
+  /* was #222121; */
+  --light-bg: #e5e5e5;
+  --light-font: #222121;
+  --btn-grey: #d8d8d8;
+  --btn-light-grey: #eee;
+  /* piano */
+  --keys-white-dark: #222121;
+  --keys-black-dark: #131313;
+  --keys-white-light: #f6f6f6;
+  --keys-black-light: #222121;
+  /* user-editable */
+  /* primary colour */
+  --dark-active: #00c7ff;
+  --light-active: #00c7ff;
+  --dark-hover: rgba(0, 199, 255, 0.8);
+  /* derived from primary colour */
+  --light-hover: rgba(0, 199, 255, 0.8);
+  /* derived from primary colour */
+  /* user-editable */
+  /* grid buttons */
+  --button-c-dark: #fff;
+  --button-middle-c-dark: #fff;
+  --button-black-dark: #fff;
+  --button-white-dark: #fff;
+  --button-active-dark: #fff;
+  --button-c-light: #fff;
+  --button-middle-c-light: #fff;
+  --button-black-light: #fff;
+  --button-white-light: #fff;
+  --button-active-light: #fff;
+  padding: 0 0 48px;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: var(--dark-bg);
+  color: var(--dark-font);
+  position: relative;
+}
+
+.midi-interface .options .icon path {
+  fill: var(--dark-font);
+}
+
+.midi-interface .options .options-cat label:hover svg path {
+  fill: var(--dark-hover);
+}
+
+.midi-interface .options .options-cat input[type='range']::-webkit-slider-thumb {
+  background: var(--dark-active);
+}
+
+.midi-interface .options .options-cat.options-modal label.active svg path {
+  fill: var(--dark-active);
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row label:hover {
+  background: var(--btn-light-grey);
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row label.active {
+  background: var(--dark-active);
+}
+
+.midi-interface .chordfinder p span {
+  color: var(--dark-active);
+}
+
+.midi-interface.light {
+  background: var(--light-bg);
+  color: var(--light-font);
+}
+
+.midi-interface.light .options .icon path {
+  fill: var(--light-font);
+}
+
+.midi-interface.light .options .options-cat label:hover svg path {
+  fill: var(--light-hover);
+}
+
+.midi-interface.light .options .options-cat input[type='range']::-webkit-slider-thumb {
+  background: var(--light-active);
+}
+
+.midi-interface.light .options .options-cat.options-modal label.active svg path {
+  fill: var(--light-active);
+}
+
+.midi-interface.light .options .options-cat.options-modal .modal-row label:hover {
+  background: var(--btn-light-grey);
+}
+
+.midi-interface.light .options .options-cat.options-modal .modal-row label.active {
+  background: var(--light-active);
+}
+
+.midi-interface.light .chordfinder p span {
+  color: var(--font-dark);
+}
+
+.midi-interface .wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.midi-interface .header {
+  padding: 32px 0 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.midi-interface .header header h1 span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.midi-interface .header header h1 img {
+  width: 300px;
+}
+
+.midi-interface .start-modal {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.midi-interface .start-modal button {
+  margin-top: 300px;
+  padding: 24px;
+  border: none;
+  outline: transparent;
+  font-family: inherit;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--dark-font);
+  background: var(--dark-bg);
+  -webkit-box-shadow: 3px 4px 5px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 3px 4px 5px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.midi-interface .start-modal button:hover {
+  color: var(--dark-hover);
+}
+
+.midi-interface .options {
+  padding: 32px 0 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.midi-interface .options .options-cat {
+  width: 32px;
+  margin-left: 16px;
+  position: relative;
+}
+
+.midi-interface .options .options-cat label {
+  position: relative;
+  cursor: pointer;
+}
+
+.midi-interface .options .options-cat label.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.midi-interface .options .options-cat input[type='checkbox'],
+.midi-interface .options .options-cat input[type='radio'] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+.midi-interface .options .options-cat input[type='range'] {
+  -webkit-transform: rotate(-90deg) translateX(-110px) translateY(2px);
+          transform: rotate(-90deg) translateX(-110px) translateY(2px);
+  -webkit-transform-origin: 0px 0px;
+          transform-origin: 0px 0px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.midi-interface .options .options-cat input[type='range']:focus {
+  outline: none;
+}
+
+.midi-interface .options .options-cat input[type='range']::-webkit-slider-thumb {
+  height: 16px;
+  width: 16px;
+  margin-top: -6px;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.midi-interface .options .options-cat input[type='range']::-webkit-slider-runnable-track {
+  height: 6px;
+  border: 1px solid #999;
+  border-radius: 100px;
+  background: var(--btn-light-grey);
+}
+
+.midi-interface .options .options-cat.options-modal {
+  position: relative;
+}
+
+.midi-interface .options .options-cat.options-modal .modal {
+  padding: 24px;
+  background: #fff;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  z-index: 200;
+  -webkit-box-shadow: 2px 3px 4px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 3px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.midi-interface .options .options-cat.options-modal .modal.modal-volume {
+  width: 60px;
+  height: 160px;
+}
+
+.midi-interface .options .options-cat.options-modal .modal.modal-styles {
+  width: 200px;
+}
+
+.midi-interface .options .options-cat.options-modal .modal.modal-menu {
+  width: 340px;
+}
+
+.midi-interface .options .options-cat.options-modal .modal-title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--dark-font);
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row label {
+  padding: 4px 8px;
+  margin: 0 4px 4px 0;
+  background: var(--btn-grey);
+  font-size: 1.125em;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row:last-of-type {
+  border-bottom: none;
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row.modal-row-notes {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row.modal-row-notes label {
+  width: 40px;
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row.colour-inputs {
+  padding: 12px 0;
+  margin-bottom: 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row.colour-inputs label {
+  padding: 4px 8px 4px 0;
+  background: #fff;
+}
+
+.midi-interface .options .options-cat.options-modal .modal-row.colour-inputs input {
+  cursor: pointer;
+}
+
+.midi-interface .options .popup {
+  width: 320px;
+  padding: 12px;
+  display: none;
+  position: absolute;
+  top: 32px;
+  right: -32px;
+  z-index: 998;
+  background: white;
+  -webkit-box-shadow: -1px 3px 5px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: -1px 3px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.midi-interface .options .popup > div:nth-child(1) {
+  margin-bottom: 24px;
+}
+
+.midi-interface .options .popup > div:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.midi-interface .options .popup .btn {
+  padding: 4px 8px;
+  display: block;
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: inherit;
+  text-decoration: none;
+  background: var(--btn-grey);
+  border: none;
+  border-radius: 0;
+  outline: transparent;
+  cursor: pointer;
+}
+
+.midi-interface .options .popup .btn:hover {
+  background: var(--btn-light-grey);
+}
+
+.midi-interface .options .popup:hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.midi-interface .options #trigger-popup:hover + .popup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.midi-interface .linn {
+  margin: 0 auto 8px;
+  display: -ms-grid;
+  display: grid;
+  border: 1px solid #000;
+}
+
+.midi-interface .linn.linn-8x8 {
+  max-width: 560px;
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
+}
+
+.midi-interface .linn.linn-14x12 {
+  max-width: 800px;
+  -ms-grid-columns: (1fr)[14];
+      grid-template-columns: repeat(14, 1fr);
+}
+
+.midi-interface .linn.linn-16x8 {
+  max-width: 800px;
+  -ms-grid-columns: (1fr)[16];
+      grid-template-columns: repeat(16, 1fr);
+}
+
+.midi-interface .linn.linn-25x8 {
+  max-width: 1000px;
+  -ms-grid-columns: (1fr)[25];
+      grid-template-columns: repeat(25, 1fr);
+}
+
+.midi-interface .linn .linn-btn {
+  padding-top: 100%;
+  font-family: inherit;
+  font-size: 12px;
+  border: 1px solid #000;
+  border-radius: 0;
+  outline: transparent;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+  -webkit-transition-timing-function: cubic-bezier(0, 0.7, 0.5, 1);
+          transition-timing-function: cubic-bezier(0, 0.7, 0.5, 1);
+}
+
+.midi-interface .linn .linn-btn .btn-label {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  color: var(--button-active-dark);
+  display: none;
+}
+
+.midi-interface .linn .linn-btn.btn-labels .btn-label {
+  display: block;
+}
+
+.midi-interface .linn .linn-btn.btn-c {
+  background: var(--button-c-dark);
+}
+
+.midi-interface .linn .linn-btn.btn-middle-c {
+  background: var(--button-middle-c-dark);
+}
+
+.midi-interface .linn .linn-btn.btn-black {
+  background: var(--button-black-dark);
+}
+
+.midi-interface .linn .linn-btn.btn-white {
+  background: var(--button-white-dark);
+}
+
+.midi-interface .linn .linn-btn:hover {
+  background: var(--dark-hover);
+}
+
+.midi-interface .linn .linn-btn:hover span {
+  color: var(--dark-font);
+  font-size: 15px;
+  display: block;
+}
+
+.midi-interface .linn .linn-btn.btn-active {
+  background: var(--button-active-dark);
+}
+
+.midi-interface .linn .linn-btn.btn-active span {
+  color: var(--dark-font);
+  font-size: 15px;
+  display: block;
+}
+
+.midi-interface .linn .linn-btn.show-channels .btn-channel {
+  padding: 2px 4px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 16px;
+  color: var(--light-bg);
+}
+
+.midi-interface .linn .linn-btn.show-channels.channel-144 {
+  background: #21ffff7c !important;
+}
+
+.midi-interface .linn .linn-btn.show-channels.channel-147 {
+  background: #ff8724d0 !important;
+}
+
+.midi-interface .linn .linn-btn.show-channels.channel-145 {
+  background: #ff669ccb !important;
+}
+
+.midi-interface .linn .linn-btn.show-channels.channel-146 {
+  background: #92a2ff7c !important;
+}
+
+.midi-interface .linn .linn-btn.show-channels.channel-148 {
+  background: #5bca0085 !important;
+}
+
+.midi-interface .linn .linn-btn.show-channels.channel-149 {
+  background: #ff363685 !important;
+}
+
+.midi-interface .linn.light .linn-btn .btn-label {
+  color: var(--dark-font);
+}
+
+.midi-interface .linn.light .linn-btn .btn-channel {
+  color: var(--dark-font);
+}
+
+.midi-interface .linn.light .linn-btn.btn-c {
+  background: var(--button-c-light);
+}
+
+.midi-interface .linn.light .linn-btn.btn-middle-c {
+  background: var(--button-middle-c-light);
+}
+
+.midi-interface .linn.light .linn-btn.btn-black {
+  background: var(--button-black-light);
+}
+
+.midi-interface .linn.light .linn-btn.btn-white {
+  background: var(--button-white-light);
+}
+
+.midi-interface .linn.light .linn-btn:hover {
+  background: var(--light-hover);
+}
+
+.midi-interface .linn.light .linn-btn.btn-active {
+  background: var(--button-active-light);
+}
+
+.midi-interface .piano {
+  margin-bottom: 32px;
+}
+
+.midi-interface .piano svg .white {
+  fill: var(--keys-white-dark);
+  stroke: #000000;
+  stroke-width: 4;
+}
+
+.midi-interface .piano svg .black {
+  fill: var(--keys-black-dark);
+  stroke: #000000;
+  stroke-width: 4;
+}
+
+.midi-interface .piano svg g rect {
+  cursor: pointer;
+  -webkit-transition: fill 0.2s;
+  transition: fill 0.2s;
+}
+
+.midi-interface .piano svg g rect:hover {
+  fill: var(--dark-active);
+}
+
+.midi-interface .piano svg g rect:hover + .label {
+  opacity: 1;
+}
+
+.midi-interface .piano svg g rect.active {
+  fill: var(--dark-active);
+}
+
+.midi-interface .piano svg .label {
+  opacity: 0;
+  -webkit-transition-timing-function: cubic-bezier(0, 0.7, 0.5, 1);
+          transition-timing-function: cubic-bezier(0, 0.7, 0.5, 1);
+  fill: var(--dark-active);
+  font-size: 36px;
+}
+
+.midi-interface .piano svg .label tspan {
+  font-size: 25px;
+}
+
+.midi-interface .piano svg .label.active {
+  opacity: 1;
+}
+
+.midi-interface .piano.light svg .white {
+  fill: var(--keys-white-light);
+  stroke: #000000;
+}
+
+.midi-interface .piano.light svg .black {
+  fill: var(--keys-black-light);
+  stroke: #000000;
+}
+
+.midi-interface .piano.light svg g rect:hover {
+  fill: var(--light-active);
+}
+
+.midi-interface .piano.light svg g rect.active {
+  fill: var(--light-active);
+}
+
+.midi-interface .piano.light svg .label {
+  fill: var(--light-font);
+}
+
+.midi-interface .status-info {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.midi-interface .status-info button {
+  width: 120px;
+  padding: 8px 0;
+  margin-right: 32px;
+  background: var(--dark-font);
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-weight: bold;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  color: #777;
+  cursor: pointer;
+}
+
+.midi-interface .status-info button:hover {
+  -webkit-filter: brightness(1.2);
+          filter: brightness(1.2);
+}
+
+.midi-interface .chordfinder p {
+  padding: 16px 0 0;
+  text-align: right;
+}
+
+.midi-interface .chordfinder p span {
+  margin-right: 16px;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.midi-interface .midi {
+  width: 200px;
+  color: #777;
+  display: none;
+}
+
+.midi-interface .midi.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.midi-interface .midi h4 {
+  padding-right: 16px;
+}
+
+.midi-interface .midi p {
+  font-size: 14px;
+}
+
+.midi-interface footer {
+  padding: 64px 0 32px;
+}
+
+.midi-interface footer p {
+  text-align: right;
+}
+
+.midi-interface .MIDISounds {
+  display: none;
+}
+
+.midi-interface .ReactModalPortal {
+  display: none;
+}

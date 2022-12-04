@@ -72,11 +72,24 @@
         }
     }
 
+    .chord-search {
+        label,
+        button {
+            &:hover {
+                background: var(--btn-light-grey);
+            }
+            &.active {
+                background: var(--dark-active);
+            }
+        }
+    }
+
     .chordfinder {
         p span {
             color: var(--dark-active);
         }
     }
+
     &.light {
         background: var(--light-bg);
         color: var(--light-font);
@@ -109,6 +122,17 @@
                             }
                         }
                     }
+                }
+            }
+        }
+        .chord-search {
+            label,
+            button {
+                &:hover {
+                    background: var(--btn-light-grey);
+                }
+                &.active {
+                    background: var(--light-active);
                 }
             }
         }
@@ -409,6 +433,33 @@
                     display: block;
                 }
             }
+            &.btn-chord-0 {
+                background: var(--button-active-dark);
+            }
+            &.btn-chord-1 {
+                background: var(--button-active-dark);
+                filter: brightness(0.8);
+            }
+            &.btn-chord-2 {
+                background: var(--button-active-dark);
+                filter: brightness(0.6);
+            }
+            &.btn-chord-3 {
+                background: var(--button-active-dark);
+                filter: brightness(0.4);
+            }
+            &.btn-chord-4 {
+                background: var(--button-active-dark);
+                filter: brightness(0.35);
+            }
+            &.btn-chord-5 {
+                background: var(--button-active-dark);
+                filter: brightness(0.3);
+            }
+            &.btn-chord-6 {
+                background: var(--button-active-dark);
+                filter: brightness(0.25);
+            }
             &.show-channels {
                 .btn-channel {
                     padding: 2px 4px;
@@ -533,6 +584,47 @@
         }
     }
 
+    .chord-search {
+        padding: 0 0 32px;
+        .search-row {
+            margin: 0 0 16px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        label {
+            padding: 4px 8px;
+            margin: 0 4px 4px 0;
+            background: var(--btn-grey);
+            font-size: 1.125em;
+            letter-spacing: 1px;
+            color: #333;
+            position: relative;
+            cursor: pointer;
+            &.disabled {
+                opacity: 0.5;
+                cursor: default;
+            }
+            input {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                position: absolute;
+            }
+        }
+        button {
+            padding: 4px 8px;
+            margin: 0 4px 4px 0;
+            background: var(--btn-grey);
+            border: none;
+            outline: transparent;
+            font-family: inherit;
+            font-size: 1.125em;
+            letter-spacing: 1px;
+            color: #333;
+            cursor: pointer;
+        }
+    }
+
     .status-info {
         height: 50px;
         display: flex;
@@ -576,9 +668,11 @@
             display: flex;
         }
         h4 {
+            margin-top: 0;
             padding-right: 16px;
         }
         p {
+            margin-top: 0;
             font-size: 14px;
         }
     }

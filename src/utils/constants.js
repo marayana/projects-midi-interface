@@ -1,5 +1,48 @@
 export const notes = ['C', 'Csharp', 'D', 'Dsharp', 'E', 'F', 'Fsharp', 'G', 'Gsharp', 'A', 'Asharp', 'B'];
 
+export const allSuffixes = [
+    'major',
+    'min',
+    'dim',
+    'dim7',
+    'sus2',
+    'sus4',
+    '7sus4',
+    'aug',
+    'aug7',
+    'aug9',
+    'maj7',
+    'maj7b5',
+    'maj7#5',
+    'maj9',
+    'maj11',
+    'maj13',
+    'm6',
+    'm69',
+    'm7',
+    'm7b5',
+    'm9',
+    'm11',
+    'mmaj7',
+    'mmaj7b5',
+    'mmaj9',
+    'mmaj11',
+    'add9',
+    'madd9',
+    '5',
+    '6',
+    '69',
+    '7',
+    '7b5',
+    '9',
+    '9b5',
+    '7b9',
+    '7#9',
+    '11',
+    '9#11',
+    '13'
+];
+
 export const linnLookup = {
     '8x8': {
         C: [2, 1],
@@ -81,6 +124,6 @@ export const colours = [
     ['button-active-light', '#00c7ff']
 ];
 
-const exportConsts = { notes, linns, linnLookup, instruments, colours };
+const exportConsts = { notes, allSuffixes, linns, linnLookup, instruments, colours };
 
 export default exportConsts;

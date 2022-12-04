@@ -2,135 +2,144 @@ const chordTree = {
     result: '',
     root: {
         result: '',
-        majorThird: {
+        3: {
             result: '',
-            perfectFifth: {
+            5: {
                 result: 'major',
-                majorSixth: {
-                    result: 'maj6',
-                    majorSecond: {
-                        result: 'maj6/9'
+                6: {
+                    result: '6',
+                    9: {
+                        result: '69'
                     }
                 },
-                minorSeventh: {
-                    result: 'dom7',
-                    minorSecond: {
-                        result: 'dom7b9'
+                b7: {
+                    result: '7',
+                    b9: {
+                        result: '7b9'
                     },
-                    minorThird: {
-                        result: 'dom7#9'
+                    b3: {
+                        result: '7#9'
                     },
-                    majorSecond: {
-                        result: 'dom9',
-                        perfectFourth: {
-                            result: 'dom11',
-                            majorSixth: {
-                                result: 'dom13'
-                            }
+                    9: {
+                        result: '9',
+                        b5: {
+                            result: '9#11'
+                        },
+                        6: {
+                            result: '13'
                         }
                     }
                 },
-                majorSeventh: {
+                7: {
                     result: 'maj7',
-                    majorSecond: {
+                    9: {
                         result: 'maj9',
-                        perfectFourth: {
-                            result: 'maj11',
-                            majorSixth: {
-                                result: 'maj13'
-                            }
+                        6: {
+                            result: 'maj13'
                         }
                     }
+                },
+                9: {
+                    result: 'add9'
                 }
             },
-            augFourth: {
-                result: 'dim',
-                majorSeventh: {
+            b5: {
+                result: '',
+                7: {
                     result: 'maj7b5'
                 },
-                minorSeventh: {
-                    result: 'dom7b5',
-                    minorSecond: {
-                        result: 'dom7b5b9'
-                    },
-                    minorThird: {
-                        result: 'dom7b5#9'
-                    },
-                    majorSecond: {
-                        result: 'dom9b5',
-                        perfectFourth: {
-                            result: 'dom11b5',
-                            majorSixth: {
-                                result: 'dom13b5'
-                            }
-                        }
+                b7: {
+                    result: '7b5',
+                    9: {
+                        result: '9b5'
                     }
                 }
             },
-            augFifth: {
+            '#5': {
                 result: 'aug',
-                minorSeventh: {
-                    result: 'aug7 / dom7#5',
-                    minorSecond: {
-                        result: 'dom7#5b9'
-                    },
-                    minorThird: {
-                        result: 'dom7#5#9'
-                    },
-                    majorSecond: {
-                        result: 'dom9#5',
-                        perfectFourth: {
-                            result: 'dom11#5',
-                            majorSixth: {
-                                result: 'dom13#5'
-                            }
-                        }
+                b7: {
+                    result: 'aug7',
+                    9: {
+                        result: 'aug9'
                     }
                 },
-                majorSixth: {
+                7: {
                     result: 'maj7#5'
                 }
             }
         },
-        perfectFourth: {
+        4: {
             result: '',
-            perfectFifth: {
-                result: 'sus',
-                minorSeventh: {
-                    result: 'dom7sus'
+            5: {
+                result: 'sus4',
+                b7: {
+                    result: '7sus4'
                 }
             }
         },
-        minorThird: {
+        b3: {
             result: '',
-            perfectFifth: {
+            5: {
                 result: 'min',
-                majorSeventh: {
-                    result: 'min(maj7)'
-                },
-                majorSixth: {
-                    result: 'min6',
-                    majorSecond: {
-                        result: 'min6/9'
+                6: {
+                    result: 'm6',
+                    9: {
+                        result: 'm69'
                     }
                 },
-                minorSeventh: {
-                    result: 'min7',
-                    majorSecond: {
-                        result: 'min9',
-                        perfectFourth: {
-                            result: 'min11'
+                b7: {
+                    result: 'm7',
+                    9: {
+                        result: 'm9',
+                        4: {
+                            result: 'm11'
+                        }
+                    }
+                },
+                7: {
+                    result: 'mmaj7',
+                    9: {
+                        result: 'mmaj9',
+                        4: {
+                            result: 'mmaj11'
                         }
                     }
                 }
             },
-            augFourth: {
+            b5: {
                 result: 'dim',
-                majorSixth: {
+                6: {
                     result: 'dim7'
                 },
-                minorSeventh: {
-                    result: 'dim7b5'
+                b7: {
+                    result: 'm7b5'
+                },
+                7: {
+                    result: 'mmaj7b5'
+                }
+            }
+        },
+        5: {
+            result: '5',
+            9: {
+                result: 'sus2'
+            },
+            b7: {
+                result: '',
+                9: {
+                    result: '',
+                    4: {
+                        result: '11'
+                    }
+                }
+            },
+            7: {
+                result: '',
+                9: {
+                    result: '',
+                    4: {
+                        result: 'maj11'
+                    }
                 }
             }
         }

@@ -35,6 +35,8 @@ function MidiInterface() {
 
     const [currNotes, setCurrNotes] = useState([]);
 
+    const [currChordSearch, setCurrChordSearch] = useState(null);
+
     // checkboxes
     const [togglers, setTogglers] = useState({
         darkMode: true,
@@ -51,7 +53,6 @@ function MidiInterface() {
     });
 
     // radio btns
-    //const grids = Object.keys(linns);
     const [settings, setSettings] = useState({
         linns: linns,
         currentGrid: '8x8',
@@ -71,18 +72,12 @@ function MidiInterface() {
             if (prop === 'button-active-dark') {
                 document.querySelector('.midi-interface').style.setProperty('--dark-active', val);
                 let hex = val.replace('#', '');
-                let hoverCol = `rgba(${parseInt(hex.slice(0, 2), 16)},${parseInt(hex.slice(2, 4), 16)},${parseInt(
-                    hex.slice(4, 6),
-                    16
-                )},0.8)`;
+                let hoverCol = `rgba(${parseInt(hex.slice(0, 2), 16)},${parseInt(hex.slice(2, 4), 16)},${parseInt(hex.slice(4, 6), 16)},0.8)`;
                 document.querySelector('.midi-interface').style.setProperty('--dark-hover', hoverCol);
             } else if (prop === 'button-active-light') {
                 document.querySelector('.midi-interface').style.setProperty('--light-active', val);
                 let hex = val.replace('#', '');
-                let hoverCol = `rgba(${parseInt(hex.slice(0, 2), 16)},${parseInt(hex.slice(2, 4), 16)},${parseInt(
-                    hex.slice(4, 6),
-                    16
-                )},0.8)`;
+                let hoverCol = `rgba(${parseInt(hex.slice(0, 2), 16)},${parseInt(hex.slice(2, 4), 16)},${parseInt(hex.slice(4, 6), 16)},0.8)`;
                 document.querySelector('.midi-interface').style.setProperty('--light-hover', hoverCol);
             }
         });
@@ -111,11 +106,6 @@ function MidiInterface() {
 
     function updateTogglers(e) {
         const newSettings = { ...togglers };
-
-        // show popup on first click on highlightAll
-        if (e.target.name === 'highlightAll' && showPopup !== null) {
-            setShowPopup(true);
-        }
 
         // programmatically disable highlightAll button when lock is on
         if (e.target.name === 'highlightAll' && newSettings.lock) {
@@ -153,18 +143,12 @@ function MidiInterface() {
             if (prop === 'button-active-dark') {
                 document.querySelector('.midi-interface').style.setProperty('--dark-active', val);
                 let hex = val.replace('#', '');
-                let hoverCol = `rgba(${parseInt(hex.slice(0, 2), 16)},${parseInt(hex.slice(2, 4), 16)},${parseInt(
-                    hex.slice(4, 6),
-                    16
-                )},0.8)`;
+                let hoverCol = `rgba(${parseInt(hex.slice(0, 2), 16)},${parseInt(hex.slice(2, 4), 16)},${parseInt(hex.slice(4, 6), 16)},0.8)`;
                 document.querySelector('.midi-interface').style.setProperty('--dark-hover', hoverCol);
             } else if (prop === 'button-active-light') {
                 document.querySelector('.midi-interface').style.setProperty('--light-active', val);
                 let hex = val.replace('#', '');
-                let hoverCol = `rgba(${parseInt(hex.slice(0, 2), 16)},${parseInt(hex.slice(2, 4), 16)},${parseInt(
-                    hex.slice(4, 6),
-                    16
-                )},0.8)`;
+                let hoverCol = `rgba(${parseInt(hex.slice(0, 2), 16)},${parseInt(hex.slice(2, 4), 16)},${parseInt(hex.slice(4, 6), 16)},0.8)`;
                 document.querySelector('.midi-interface').style.setProperty('--light-hover', hoverCol);
             }
         });
@@ -197,7 +181,7 @@ function MidiInterface() {
     }
 
     const updateBtnsCallback = useCallback(
-        (n, i, m) => {
+        (n, i, m, arr) => {
             function updateCurrBtns(name, id, triggeredBy) {
                 if (triggeredBy === 'down') {
                     // add clicked/pressed button
@@ -222,10 +206,12 @@ function MidiInterface() {
                 } else if (triggeredBy === 'unlock') {
                     // remove all locked buttons
                     setCurrBtns([]);
+                } else if (triggeredBy === 'search') {
+                    setCurrBtns(arr);
                 }
                 return true;
             }
-            updateCurrBtns(n, i, m);
+            updateCurrBtns(n, i, m, arr);
         },
         [togglers.lock]
     );
@@ -261,18 +247,18 @@ function MidiInterface() {
                 </div>
             </div>
 
-            {
-                <Linn
-                    grid={settings.currentGrid}
-                    startNote={settings.linns[settings.currentGrid]}
-                    togglers={togglers}
-                    isPianoClickOn={isPianoClickOn}
-                    currBtns={currBtns}
-                    updateBtnsCallback={updateBtnsCallback}
-                    playNoteCallback={playNoteCallback}
-                    showChannels={showChannels}
-                />
-            }
+            <Linn
+                grid={settings.currentGrid}
+                startNote={settings.linns[settings.currentGrid]}
+                togglers={togglers}
+                isPianoClickOn={isPianoClickOn}
+                currBtns={currBtns}
+                updateBtnsCallback={updateBtnsCallback}
+                playNoteCallback={playNoteCallback}
+                showChannels={showChannels}
+                currChordSearch={currChordSearch}
+            />
+
             <Piano
                 isStart={isStart}
                 darkMode={togglers.darkMode}
@@ -281,21 +267,17 @@ function MidiInterface() {
                 playNoteCallback={playNoteCallback}
                 updateIsPianoClickOn={updateIsPianoClickOn}
             />
+
             {isStart && (
                 <div className="wrapper">
                     <div className="status-info">
                         <button type="button" onClick={updateShowChannels}>
                             {showChannels ? 'hide channels' : 'show channels'}
                         </button>
-                        <Midi
-                            showChannels={showChannels}
-                            playNoteCallback={playNoteCallback}
-                            updateBtnsCallback={updateBtnsCallback}
-                        />
+                        <Midi showChannels={showChannels} playNoteCallback={playNoteCallback} updateBtnsCallback={updateBtnsCallback} />
                     </div>
                 </div>
             )}
-
             {isStart && (
                 <MIDISounds
                     ref={ref => {

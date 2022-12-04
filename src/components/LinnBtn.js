@@ -1,6 +1,16 @@
 import React from 'react';
 
-function LinnBtn({ id, name, togglers, isPianoClickOn, currBtns, updateBtnsCallback, playNoteCallback, showChannels }) {
+function LinnBtn({
+    id,
+    name,
+    togglers,
+    isPianoClickOn,
+    currBtns,
+    updateBtnsCallback,
+    playNoteCallback,
+    showChannels,
+    currChordSearch
+}) {
     const { showLabels, highlightAll, lock } = togglers;
     const [note, octave] = name.split('-');
 
@@ -8,6 +18,7 @@ function LinnBtn({ id, name, togglers, isPianoClickOn, currBtns, updateBtnsCallb
         note === 'C' ? (+octave === 4 ? 'btn-middle-c' : 'btn-c') : note.length > 1 ? 'btn-black' : 'btn-white';
     const btnLabelsClass = showLabels ? ' btn-labels' : '';
     const btnActiveClass = isBtnActive([name, id]) ? ' btn-active' : '';
+    const btnChordSearchClass = currChordSearch ? getBtnChordSearchClass(note) : '';
     const btnChannelClass = showChannels ? ` show-channels channel-${id.split('-')[2]}` : '';
 
     function handleMouseDown(e) {
@@ -23,15 +34,23 @@ function LinnBtn({ id, name, togglers, isPianoClickOn, currBtns, updateBtnsCallb
     }
 
     function isBtnActive([btnName, btnId]) {
-        return isPianoClickOn || highlightAll || lock
+        const noteName = btnName.split('-')[0];
+        return currChordSearch && currChordSearch.includes(noteName)
+            ? true
+            : isPianoClickOn || highlightAll || lock
             ? currBtns.some(([name, id]) => name === btnName)
             : currBtns.some(([name, id]) => id === btnId);
+    }
+
+    function getBtnChordSearchClass(note) {
+        const index = currChordSearch.indexOf(note);
+        return index !== -1 ? ` btn-chord-${index}` : '';
     }
 
     return (
         <button
             id={id}
-            className={`linn-btn ${btnKeyClass}${btnLabelsClass}${btnActiveClass}${btnChannelClass}`}
+            className={`linn-btn ${btnKeyClass}${btnLabelsClass}${btnActiveClass}${btnChannelClass}${btnChordSearchClass}`}
             name={name}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}

@@ -10,27 +10,27 @@ function ChordFinder({ currNotes }) {
             const index = scale.indexOf(n);
             switch (index) {
                 case 1:
-                    return 'minorSecond';
+                    return 'b9';
                 case 2:
-                    return 'majorSecond';
+                    return '9';
                 case 3:
-                    return 'minorThird';
+                    return 'b3';
                 case 4:
-                    return 'majorThird';
+                    return '3';
                 case 5:
-                    return 'perfectFourth';
+                    return '4';
                 case 6:
-                    return 'augFourth';
+                    return 'b5';
                 case 7:
-                    return 'perfectFifth';
+                    return '5';
                 case 8:
-                    return 'augFifth';
+                    return '#5';
                 case 9:
-                    return 'majorSixth';
+                    return '6';
                 case 10:
-                    return 'minorSeventh';
+                    return 'b7';
                 case 11:
-                    return 'majorSeventh';
+                    return '7';
                 default:
                     return 'root';
             }

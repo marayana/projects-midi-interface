@@ -9,7 +9,8 @@ function Linn({
     isPianoClickOn,
     currBtns,
     updateBtnsCallback,
-    playNoteCallback
+    playNoteCallback,
+    currChordSearch
 }) {
     const gridTemplate = gridTemplates[grid][startNote];
     const classname = togglers.darkMode ? `linn linn-${grid}` : `linn linn-${grid} light`;
@@ -32,6 +33,7 @@ function Linn({
                                 updateBtnsCallback={updateBtnsCallback}
                                 playNoteCallback={playNoteCallback}
                                 showChannels={showChannels}
+                                currChordSearch={currChordSearch}
                             />
                         );
                     })}

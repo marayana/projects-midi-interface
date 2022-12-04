@@ -24,3 +24,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+ChordSearch.js
+chordData.js
+chordTreeOLD.js
+suffixToIntervals.js
+testChordDB.js
